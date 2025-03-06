@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GreenMall - Your Shopping Cart</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-color: #4CAF50;
+      --secondary-color: #2E7D32;
+      --accent-color: #8BC34A;
+      --light-color: #E8F5E9;
+      --dark-color: #1B5E20;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f8f9fa;
+    }
+    
+    .navbar {
+      background-color: var(--primary-color);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .navbar-brand {
+      font-weight: bold;
+      color: white !important;
+    }
+    
+    .nav-link {
+      color: white !important;
+      margin: 0 5px;
+    }
+    
+    .btn-primary {
+      background-color: var(--primary-color);
+      border-color: var(--primary-color);
+    }
+    
+    .btn-primary:hover {
+      background-color: var(--secondary-color);
+      border-color: var(--secondary-color);
+    }
+    
+    .footer {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 30px 0;
+      margin-top: 40px;
+    }
+    
+    .cart-item {
+      border-bottom: 1px solid #eee;
+      padding: 15px 0;
+    }
+    
+    .cart-item:last-child {
+      border-bottom: none;
+    }
+    
+    .item-image {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+    
+    .quantity-control {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .quantity-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background-color: #f1f1f1;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+    
+    .quantity-input {
+      width: 40px;
+      text-align: center;
+      border: none;
+      background: transparent;
+      font-weight: 600;
+      margin: 0 5px;
+    }
+    
+    .shop-badge {
+      background-color: var(--light-color);
+      color: var(--dark-color);
+      font-size: 0.8rem;
+      border-radius: 20px;
+      padding: 3px 10px;
+    }
+    
+    .cart-summary {
+      background-color: white;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    
+    .promo-code {
+      border: 1px dashed #ddd;
+      padding: 15px;
+      border-radius: 8px;
+      background-color: #f9f9f9;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <i class="fas fa-leaf me-2"></i>GreenMall
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="shops.html">Shops</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="categories.html">Categories</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="deals.html">Deals</a>
+          </li>
+        </ul>
+        <div class="d-flex">
+          <form class="d-flex me-2">
+            <input class="form-control me-2" type="search" placeholder="Search for shops or products">
+            <button class="btn btn-outline-light" type="submit">
+              <i class="fas fa-search"></i>
+            </button>
+          </form>
+          <a href="cart.html" class="btn btn-outline-light position-relative me-2 active">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+              3
+            </span>
+          </a>
+          <a href="login.html" class="btn btn-outline-light me-2">
+            <i class="fas fa-user"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="container my-5">
+    <h1 class="mb-4">Your Shopping Cart</h1>
+    
+    <div class="row">
+      <div class="col-lg-8">
+        <!-- Cart Items -->
+        <div class="bg-white p-4 rounded shadow-sm mb-4">
+          <h5 class="mb-3">Cart Items (3)</h5>
+          
+          <!-- Item 1 -->
+          <div class="cart-item">
+            <div class="row align-items-center">
+              <div class="col-md-2">
+                <img src="plant.jpg" alt="Organic Seeds" class="item-image">
+              </div>
+              <div class="col-md-6">
+                <h6 class="mb-1">Organic Tomato Seeds - Heritage Variety</h6>
+                <div class="text-muted mb-2">
+                  <small class="shop-badge">
+                    <i class="fas fa-store me-1"></i>Green Thumb Gardens
+                  </small>
+                </div>
+                <div class="d-flex mt-3">
+                  <a href="#" class="text-decoration-none me-3 text-muted">
+                    <i class="far fa-heart me-1"></i> Save for later
+                  </a>
+                  <a href="#" class="text-decoration-none text-danger">
+                    <i class="far fa-trash-alt me-1"></i> Remove
+                  </a>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="quantity-control">
+                  <button class="quantity-btn">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                  <input type="text" class="quantity-input" value="2" readonly>
+                  <button class="quantity-btn">
+                    <i class="fas fa-plus"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="col-md-2 text-end">
+                <p class="mb-0 fw-bold">$6.99</p>
+                <small class="text-muted">$3.49 each</small>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Item 2 -->
+          <div class="cart-item">
+            <div class="row align-items-center">
+              <div class="col-md-2">
+                <img src="plant.jpg" alt="Ceramic Pot" class="item-image">
+              </div>
+              <div class="col-md-6">
+                <h6 class="mb-1">Decorative Ceramic Pot - Blue Pattern</h6>
+                <div class="text-muted mb-2">
+                  <small class="shop-badge">
+                    <i class="fas fa-store me-1"></i>Blossom & Grow
+                  </small>
+                </div>
+                <div class="d-flex mt-3">
+                  <a href="#" class="text-decoration-none me-3 text-muted">
+                    <i class="far fa-heart me-1"></i> Save for later
+                  </a>
+                  <a href="#" class="text-decoration-none text-danger">
+                    <i class="far fa-trash-alt me-1"></i> Remove
+                  </a>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="quantity-control">
+                  <button class="quantity-btn">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                  <input type="text" class="quantity-input" value="1" readonly>
+                  <button class="quantity-btn">
+                    <i class="fas fa-plus"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="col-md-2 text-end">
+                <p class="mb-0 fw-bold">$14.99</p>
+                <small class="text-success">Sale: 25% off</small>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Item 3 -->
+          <div class="cart-item">
+            <div class="row align-items-center">
+              <div class="col-md-2">
+                <img src="plant.jpg" alt="Garden Tool Set" class="item-image">
+              </div>
+              <div class="col-md-6">
+                <h6 class="mb-1">Premium Garden Hand Tool Set - 3pcs</h6>
+                <div class="text-muted mb-2">
+                  <small class="shop-badge">
+                    <i class="fas fa-store me-1"></i>Green Thumb Gardens
+                  </small>
+                </div>
+                <div class="d-flex mt-3">
+                  <a href="#" class="text-decoration-none me-3 text-muted">
+                    <i class="far fa-heart me-1"></i> Save for later
+                  </a>
+                  <a href="#" class="text-decoration-none text-danger">
+                    <i class="far fa-trash-alt me-1"></i> Remove
+                  </a>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="quantity-control">
+                  <button class="quantity-btn">
+                    <i class="fas fa-minus"></i>
+                  </button>
+                  <input type="text" class="quantity-input" value="1" readonly>
+                  <button class="quantity-btn">
+                    <i class="fas fa-plus"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="col-md-2 text-end">
+                <p class="mb-0 fw-bold">$24.99</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Recommended Products -->
+        <div class="bg-white p-4 rounded shadow-sm">
+          <h5 class="mb-3">You Might Also Like</h5>
+          <div class="row">
+            <div class="col-md-4 col-6 mb-3">
+              <div class="card h-100">
+                <img src="plant.jpg" class="card-img-top" alt="Product">
+                <div class="card-body p-2">
+                  <p class="card-title mb-1 small">Seed Starting Tray Kit</p>
+                  <p class="card-text mb-1 fw-bold">$12.99</p>
+                  <button class="btn btn-sm btn-primary w-100">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 col-6 mb-3">
+              <div class="card h-100">
+                <img src="plant.jpg" class="card-img-top" alt="Product">
+                <div class="card-body p-2">
+                  <p class="card-title mb-1 small">Organic Fertilizer - 1lb</p>
+                  <p class="card-text mb-1 fw-bold">$8.49</p>
+                  <button class="btn btn-sm btn-primary w-100">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 col-6 mb-3">
+              <div class="card h-100">
+                <img src="plant.jpg" class="card-img-top" alt="Product">
+                <div class="card-body p-2">
+                  <p class="card-title mb-1 small">Plant Labels - 50pcs</p>
+                  <p class="card-text mb-1 fw-bold">$5.99</p>
+                  <button class="btn btn-sm btn-primary w-100">Add to Cart</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-lg-4 mt-4 mt-lg-0">
+        <!-- Order Summary -->
+        <div class="cart-summary mb-4">
+          <h5 class="mb-4">Order Summary</h5>
+          
+          <div class="d-flex justify-content-between mb-2">
+            <span>Subtotal (3 items)</span>
+            <span>$46.97</span>
+          </div>
+          <div class="d-flex justify-content-between mb-2">
+            <span>Shipping</span>
+            <span>$4.99</span>
+          </div>
+          <div class="d-flex justify-content-between mb-2">
+            <span>Tax</span>
+            <span>$3.76</span>
+          </div>
+          
+          <!-- Promo Code Section -->
+          <div class="promo-code my-3">
+            <div class="d-flex">
+              <input type="text" class="form-control me-2" placeholder="Promo code">
+              <button class="btn btn-outline-success">Apply</button>
+            </div>
+          </div>
+          
+          <hr>
+          <div class="d-flex justify-content-between mb-2 fw-bold">
+            <span>Total</span>
+            <span>$55.72</span>
+          </div>
+          
+          <a href="checkout.html" class="btn btn-primary w-100 mt-3">
+            Proceed to Checkout <i class="fas fa-arrow-right ms-2"></i>
+          </a>
+          
+          <div class="d-flex justify-content-center mt-3">
+            <a href="index.html" class="text-decoration-none">
+              <i class="fas fa-arrow-left me-2"></i> Continue Shopping
+            </a>
+          </div>
+        </div>
+        
+        <!-- Payment Methods -->
+        <div class="bg-white p-3 rounded shadow-sm text-center">
+          <p class="mb-2 text-muted">We Accept</p>
+          <div class="d-flex justify-content-center gap-2">
+            <i class="fab fa-cc-visa fa-2x text-primary"></i>
+            <i class="fab fa-cc-mastercard fa-2x text-danger"></i>
+            <i class="fab fa-cc-amex fa-2x text-info"></i>
+            <i class="fab fa-cc-paypal fa-2x text-primary"></i>
+          </div>
+          <p class="mt-2 mb-0 small text-muted">Secured Payment Processing</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 mb-4 mb-lg-0">
+          <h5><i class="fas fa-leaf me-2"></i>GreenMall</h5>
+          <p>Your one-stop marketplace for all gardening supplies. Connect with the best gardening shops and find everything you need.</p>
+          <div class="social-links">
+            <a href="#" class="text-white me-2"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="text-white me-2"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="text-white me-2"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="text-white"><i class="fab fa-pinterest"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+          <h5>Quick Links</h5>
+          <ul class="list-unstyled">
+            <li><a href="#" class="text-white">Home</a></li>
+            <li><a href="#" class="text-white">Shops</a></li>
+            <li><a href="#" class="text-white">Categories</a></li>
+            <li><a href="#" class="text-white">Deals</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+          <h5>Help</h5>
+          <ul class="list-unstyled">
+            <li><a href="#" class="text-white">FAQ</a></li>
+            <li><a href="#" class="text-white">Shipping</a></li>
+            <li><a href="#" class="text-white">Returns</a></li>
+            <li><a href="#" class="text-white">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4 col-md-4">
+          <h5>Newsletter</h5>
+          <p>Subscribe to receive updates on new shops and special offers.</p>
+          <form class="d-flex">
+            <input type="email" class="form-control me-2" placeholder="Your Email">
+            <button type="submit" class="btn btn-outline-light">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      <hr class="my-4 bg-light">
+      <div class="row">
+        <div class="col-md-6 text-center text-md-start">
+          <p class="mb-0">&copy; 2025 GreenMall. All rights reserved.</p>
+        </div>
+        <div class="col-md-6 text-center text-md-end">
+          <a href="#" class="text-white me-3">Privacy Policy</a>
+          <a href="#" class="text-white me-3">Terms of Service</a>
+          <a href="#" class="text-white">Seller Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

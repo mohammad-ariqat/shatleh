@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GreenMall - Gardening Supplies Marketplace</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-color: #4CAF50;
+      --secondary-color: #2E7D32;
+      --accent-color: #8BC34A;
+      --light-color: #E8F5E9;
+      --dark-color: #1B5E20;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f8f9fa;
+    }
+    
+    .navbar {
+      background-color: var(--primary-color);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .navbar-brand {
+      font-weight: bold;
+      color: white !important;
+    }
+    
+    .nav-link {
+      color: white !important;
+      margin: 0 5px;
+    }
+    
+    .hero-section {
+      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('plant.jpg') center/cover no-repeat;
+      color: white;
+      padding: 100px 0;
+      margin-bottom: 40px;
+    }
+    
+    .shop-card {
+      transition: transform 0.3s;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    
+    .shop-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    }
+    
+    .shop-card img {
+      height: 180px;
+      object-fit: cover;
+    }
+    
+    .shop-card .card-body {
+      padding: 1.25rem;
+    }
+    
+    .shop-rating {
+      color: #FFD700;
+    }
+    
+    .btn-primary {
+      background-color: var(--primary-color);
+      border-color: var(--primary-color);
+    }
+    
+    .btn-primary:hover {
+      background-color: var(--secondary-color);
+      border-color: var(--secondary-color);
+    }
+    
+    .footer {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 30px 0;
+      margin-top: 40px;
+    }
+    
+    .category-badge {
+      background-color: var(--light-color);
+      color: var(--dark-color);
+      font-size: 0.8rem;
+      margin-right: 5px;
+      border-radius: 20px;
+      padding: 5px 10px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <i class="fas fa-leaf me-2"></i>GreenMall
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="shops.html">Shops</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="categories.html">Categories</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="deals.html">Deals</a>
+          </li>
+        </ul>
+        <div class="d-flex">
+          <form class="d-flex me-2">
+            <input class="form-control me-2" type="search" placeholder="Search for shops or products">
+            <button class="btn btn-outline-light" type="submit">
+              <i class="fas fa-search"></i>
+            </button>
+          </form>
+          <a href="cart.html" class="btn btn-outline-light position-relative me-2">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+              3
+            </span>
+          </a>
+          <a href="login.html" class="btn btn-outline-light me-2">
+            <i class="fas fa-user"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-section text-center">
+    <div class="container">
+      <h1>Your One-Stop Gardening Marketplace</h1>
+      <p class="lead">Discover the best gardening shops and supplies for your green dreams</p>
+      <a href="shops.html" class="btn btn-light btn-lg mt-3">
+        Start Shopping <i class="fas fa-arrow-right ms-2"></i>
+      </a>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <div class="container">
+    <!-- Featured Categories -->
+    <section class="mb-5">
+      <h2 class="mb-4">Popular Categories</h2>
+      <div class="row">
+        <div class="col-md-2 col-sm-4 col-6 mb-4 text-center">
+          <div class="card h-100">
+            <img src="plant.jpg" class="card-img-top" alt="Seeds">
+            <div class="card-body">
+              <h5 class="card-title">Seeds</h5>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2 col-sm-4 col-6 mb-4 text-center">
+          <div class="card h-100">
+            <img src="plant.jpg" class="card-img-top" alt="Tools">
+            <div class="card-body">
+              <h5 class="card-title">Tools</h5>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2 col-sm-4 col-6 mb-4 text-center">
+          <div class="card h-100">
+            <img src="plant.jpg" class="card-img-top" alt="Soil">
+            <div class="card-body">
+              <h5 class="card-title">Soil</h5>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2 col-sm-4 col-6 mb-4 text-center">
+          <div class="card h-100">
+            <img src="plant.jpg" class="card-img-top" alt="Pots">
+            <div class="card-body">
+              <h5 class="card-title">Pots</h5>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2 col-sm-4 col-6 mb-4 text-center">
+          <div class="card h-100">
+            <img src="plant.jpg" class="card-img-top" alt="Fertilizer">
+            <div class="card-body">
+              <h5 class="card-title">Fertilizer</h5>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2 col-sm-4 col-6 mb-4 text-center">
+          <div class="card h-100">
+            <img src="plant.jpg" class="card-img-top" alt="Plants">
+            <div class="card-body">
+              <h5 class="card-title">Plants</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Shops -->
+    <section class="mb-5">
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Featured Shops</h2>
+        <a href="shops.html" class="btn btn-outline-success">View All Shops</a>
+      </div>
+      <div class="row">
+        <div class="col-lg-4 col-md-6">
+          <div class="card shop-card">
+            <img src="plant.jpg" class="card-img-top" alt="Green Thumb Gardens">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <h5 class="card-title mb-0">Green Thumb Gardens</h5>
+                <div class="shop-rating">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+                  <span class="text-muted ms-1">(4.5)</span>
+                </div>
+              </div>
+              <div class="mb-3">
+                <span class="category-badge">Seeds</span>
+                <span class="category-badge">Tools</span>
+                <span class="category-badge">Soil</span>
+              </div>
+              <p class="card-text">Specializing in organic seeds and eco-friendly gardening supplies.</p>
+              <a href="shop-detail.html" class="btn btn-primary">Visit Shop</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="card shop-card">
+            <img src="plant.jpg" class="card-img-top" alt="Blossom & Grow">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <h5 class="card-title mb-0">Blossom & Grow</h5>
+                <div class="shop-rating">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <span class="text-muted ms-1">(5.0)</span>
+                </div>
+              </div>
+              <div class="mb-3">
+                <span class="category-badge">Pots</span>
+                <span class="category-badge">Plants</span>
+                <span class="category-badge">Decor</span>
+              </div>
+              <p class="card-text">Premium gardening supplies and beautiful decorative pots.</p>
+              <a href="shop-detail.html" class="btn btn-primary">Visit Shop</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="card shop-card">
+            <img src="plant.jpg" class="card-img-top" alt="Seed Vault">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <h5 class="card-title mb-0">Seed Vault</h5>
+                <div class="shop-rating">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="far fa-star"></i>
+                  <span class="text-muted ms-1">(4.0)</span>
+                </div>
+              </div>
+              <div class="mb-3">
+                <span class="category-badge">Seeds</span>
+                <span class="category-badge">Rare Varieties</span>
+              </div>
+              <p class="card-text">Rare and heirloom seeds from around the world.</p>
+              <a href="shop-detail.html" class="btn btn-primary">Visit Shop</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Deal of the Day -->
+    <section class="mb-5">
+      <h2 class="mb-4">Deal of the Day</h2>
+      <div class="card">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img src="plant.jpg" class="img-fluid rounded-start h-100" alt="Special Deal">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h3 class="card-title">Gardening Starter Kit Bundle</h3>
+              <div class="d-flex align-items-center mb-3">
+                <span class="text-decoration-line-through text-muted me-2">$59.99</span>
+                <span class="fs-3 fw-bold text-danger">$39.99</span>
+                <span class="badge bg-danger ms-2">33% OFF</span>
+              </div>
+              <p class="card-text">Get everything you need to start your garden: 10 varieties of organic seeds, starter pots, premium soil, and essential tools.</p>
+              <p class="card-text">
+                <i class="fas fa-clock text-warning me-1"></i>
+                <small class="text-danger">Offer ends in: 08:45:22</small>
+              </p>
+              <a href="#" class="btn btn-primary">Add to Cart</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Customer Reviews -->
+    <section class="mb-5">
+      <h2 class="mb-4">What Our Customers Say</h2>
+      <div class="row">
+        <div class="col-md-4 mb-3">
+          <div class="card h-100">
+            <div class="card-body">
+              <div class="shop-rating mb-2">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <p class="card-text">"The seeds I bought from Green Thumb Gardens grew beautifully! The variety and quality are unmatched."</p>
+              <div class="d-flex align-items-center mt-3">
+                <img src="plant.jpg" class="rounded-circle me-2" alt="Customer">
+                <div>
+                  <h6 class="mb-0">Sarah Johnson</h6>
+                  <small class="text-muted">Verified Buyer</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-3">
+          <div class="card h-100">
+            <div class="card-body">
+              <div class="shop-rating mb-2">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+              </div>
+              <p class="card-text">"Fast shipping and excellent customer service. The gardening tools I ordered are of professional quality."</p>
+              <div class="d-flex align-items-center mt-3">
+                <img src="plant.jpg" class="rounded-circle me-2" alt="Customer">
+                <div>
+                  <h6 class="mb-0">Michael Rodriguez</h6>
+                  <small class="text-muted">Verified Buyer</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-3">
+          <div class="card h-100">
+            <div class="card-body">
+              <div class="shop-rating mb-2">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <p class="card-text">"Blossom & Grow has the most beautiful decorative pots. My plants look stunning in them!"</p>
+              <div class="d-flex align-items-center mt-3">
+                <img src="plant.jpg" class="rounded-circle me-2" alt="Customer">
+                <div>
+                  <h6 class="mb-0">Emily Chen</h6>
+                  <small class="text-muted">Verified Buyer</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 mb-4 mb-lg-0">
+          <h5><i class="fas fa-leaf me-2"></i>GreenMall</h5>
+          <p>Your one-stop marketplace for all gardening supplies. Connect with the best gardening shops and find everything you need.</p>
+          <div class="social-links">
+            <a href="#" class="text-white me-2"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="text-white me-2"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="text-white me-2"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="text-white"><i class="fab fa-pinterest"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+          <h5>Quick Links</h5>
+          <ul class="list-unstyled">
+            <li><a href="#" class="text-white">Home</a></li>
+            <li><a href="#" class="text-white">Shops</a></li>
+            <li><a href="#" class="text-white">Categories</a></li>
+            <li><a href="#" class="text-white">Deals</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+          <h5>Help</h5>
+          <ul class="list-unstyled">
+            <li><a href="#" class="text-white">FAQ</a></li>
+            <li><a href="#" class="text-white">Shipping</a></li>
+            <li><a href="#" class="text-white">Returns</a></li>
+            <li><a href="#" class="text-white">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4 col-md-4">
+          <h5>Newsletter</h5>
+          <p>Subscribe to receive updates on new shops and special offers.</p>
+          <form class="d-flex">
+            <input type="email" class="form-control me-2" placeholder="Your Email">
+            <button type="submit" class="btn btn-outline-light">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      <hr class="my-4 bg-light">
+      <div class="row">
+        <div class="col-md-6 text-center text-md-start">
+          <p class="mb-0">&copy; 2025 GreenMall. All rights reserved.</p>
+        </div>
+        <div class="col-md-6 text-center text-md-end">
+          <a href="#" class="text-white me-3">Privacy Policy</a>
+          <a href="#" class="text-white me-3">Terms of Service</a>
+          <a href="#" class="text-white">Seller Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
